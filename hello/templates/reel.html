@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}Reel entry |{% endblock title %}
+{% block body %} 
+
+<form method="post" action="/submit">
+  {% csrf_token %}
+    <div class="form-group col-md-4">
+        <label class="form-label" for="typeNumber">Reel no.</label>
+        <input type="number" id="typeNumber" name="reel_no" class="form-control" />
+        
+    </div>
+    <!--<div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email</label>
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+      </div>-->
+    <div class="form-group col-md-4">
+        <label class="form-label" for="typeNumber">Mill name</label>
+        <input type="text" id="typeNumber" name="reel_mill" class="form-control"  />
+        
+    </div> 
+    <div class="form-group col-md-4">
+      <label class="form-label" for="typeNumber">Weight</label>
+      <input type="number" id="typeNumber" name="reel_weight" class="form-control" step="0.01"/>
+      
+  </div>  
+</div> 
+<div class="form-group col-md-4">
+  <label class="form-label" for="typeNumber">Size</label>
+  <input type="number" id="typeNumber" name="reel_size" class="form-control" />
+  
+</div>   
+<div class="form-group col-md-4">
+  <label class="form-label" for="typeNumber">GSM</label>
+  <input type="number" id="typeNumber" name="reel_gsm" class="form-control" />
+  
+</div> 
+<div class="form-group col-md-4">
+  <label class="form-label" for="typeNumber">Rate</label>
+  <input type="number" id="typeNumber" name="reel_rate" class="form-control" step="0.01"/>
+  
+</div> 
+
+    <!--<div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">City</label>
+        <input type="text" class="form-control" id="inputCity">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">State</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">Zip</label>
+        <input type="text" class="form-control" id="inputZip">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Check me out
+        </label>
+      </div>
+    </div>-->
+    
+    <!--date picker-->
+
+<button type="submit"  class="btn btn-primary">Register</button> 
+</form>
+  {% endblock body %}

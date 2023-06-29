@@ -1,0 +1,297 @@
+{% extends 'base.html' %}
+{% block title %}Reel Inventory |{% endblock title %}
+{% block body %} 
+ {% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+</style>	
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+<div class="container">
+	<!-- Button trigger modal -->
+{% comment %} <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	Launch demo modal
+  </button> {% endcomment %}
+  <button class="no-print" type="button"  data-toggle="modal" data-target="#useModal">Use</button>	
+  <button class="no-print" type="button"  data-toggle="modal" data-target="#wasteModal">Waste</button>
+  <button class="no-print" type="button"  data-toggle="modal" data-target="#undoModal">Undo</button>	
+  <button class="no-print" type="button"  data-toggle="modal" data-target="#editModal">Edit</button>
+  <button class="no-print" type="button"  data-toggle="modal" data-target="#deleteModal">Delete</button>
+  {% comment %} <button onclick="window.print()">Print this page</button> {% endcomment %}
+  {% comment %} <button class="no-print" onclick="window.print()">Print</button> {% endcomment %}
+  
+  <!-- Modal -->
+  <form method="post" action="/use">
+	{% csrf_token %}
+  <div class="modal fade" id="useModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Reel Utilization</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div> 
+		<div class="modal-body">
+		  
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Reel No</label>
+				<input type="text" id="typeNumber" name="use_reelno" class="form-control" />
+				
+			</div>
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Sheet Height</label>
+				<input type="text" id="typeNumber" name="use_sheetheight" class="form-control" />
+				
+			</div>
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Sheets printed</label>
+				<input type="text" id="typeNumber" name="use_reelquantity" class="form-control" />
+				
+			</div>
+		  
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="submit" class="btn btn-primary">Use</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  </form>	
+
+
+
+  <form method="post" action="/waste">
+	{% csrf_token %}
+  <div class="modal fade" id="wasteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Reel Wastage</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div> 
+		<div class="modal-body">
+		  
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Reel No</label>
+				<input type="text" id="typeNumber" name="use_reelno" class="form-control" />
+				
+			</div>
+			
+		  
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="submit" class="btn btn-primary">Waste</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  </form>
+
+
+  <form method="post" action="/undo">
+	{% csrf_token %}
+  <div class="modal fade" id="undoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Undo reel entry</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div> 
+		<div class="modal-body">
+		  
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Reel No</label>
+				<input type="text" id="typeNumber" name="undo_reelno" class="form-control" />
+				
+			</div>
+			
+		  
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="submit" class="btn btn-primary">Undo</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  </form>
+
+
+  <form method="post" action="/edit">
+	{% csrf_token %}
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Edit reel entry</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div> 
+		<div class="modal-body">
+		  
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Old Reel No</label>
+				<input type="text" id="typeNumber" name="edit_oldreelno" class="form-control" />
+				
+			</div>
+
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">New Reel No</label>
+				<input type="text" id="typeNumber" name="edit_newreelno" class="form-control" />
+				
+			</div>
+
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Mill name</label>
+				<input type="text" id="typeNumber" name="edit_mill" class="form-control" />
+				
+			</div>
+
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">GSM</label>
+				<input type="text" id="typeNumber" name="edit_gsm" class="form-control" />
+				
+			</div>
+
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Weight</label>
+				<input type="text" id="typeNumber" name="edit_weight" class="form-control" />
+				
+			</div>
+
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Rate</label>
+				<input type="text" id="typeNumber" name="edit_rate" class="form-control" />
+				
+			</div>
+
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Size</label>
+				<input type="text" id="typeNumber" name="edit_size" class="form-control" />
+				
+			</div>
+			
+		  
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="submit" class="btn btn-primary">Edit</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  </form>
+
+
+
+  <form method="post" action="/delete">
+	{% csrf_token %}
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Delete Reel</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  
+			<div class="form-group col-md-4">
+				<label class="form-label" for="typeNumber">Reel No</label>
+				<input type="text" id="typeNumber" name="del_reelno" class="form-control" />
+				
+			</div>
+		  
+
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="submit" class="btn btn-primary">Delete</button>
+		</div>
+	  </div>
+	</div>
+  </div>  
+  </form>	
+	
+	
+<table class="table table-dark table-striped">
+	<thead>
+	<tr>
+		<th>Serial no</th>
+        <th>Reel no</th>
+		<th>Mill name</th>
+		<th>GSM</th>
+		<th>Size</th>
+		<th>Date</th>
+        <th>Weight</th>
+        <th>Rate</th>
+        <th>Utilized</th>
+        <th>Balance</th>
+        <th>Waste</th>
+		<th>Amount</th>
+	</tr>
+	</thead>
+	<tbody>
+	<!-- jinja2 Technique -->
+	
+	{% for i in show %}
+	<tr>
+        
+		<td >{{i.id}}</td>
+        <td >{{i.reel_no}}</td>
+		<td>{{i.reel_mill}}</td>
+		<td>{{i.reel_gsm}}</td>
+		<td>{{i.reel_size}}</td>
+		<td>{{i.reel_date}}</td>
+        <td>{{i.reel_weight}}</td>
+        <td>{{i.reel_rate}}</td>
+		<td>{{i.reel_utilization}}</td>
+		<td>{{i.reel_balance}}</td>
+		<td>{{i.reel_waste}}</td>
+		<td>{{i.reel_amount}}</td>
+         
+	</tr>
+	{% endfor %}
+	<td>Grand Total</td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td>{{reelweight}}</td>
+	<td>{{reelrate}}</td>
+	<td>{{reelutilization}}</td>
+	<td>{{reelbalance}}</td>
+	<td>{{reelwaste}}</td>
+	<td>{{reelamount}}</td>
+	</tbody>
+</table>
+</div>
+
+</body>
+</html>
+{% endblock body %}

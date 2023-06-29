@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Reel report |{% endblock title %}
+{% block body %} 
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <style>
+        .button {
+          background-color: #4CAF50; /* Green */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        
+        .button2 {background-color: #008CBA;} /* Blue */
+        .button3 {background-color: #f44336;} /* Red */ 
+        .button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+        .button5 {background-color: #555555;} /* Black */
+        </style>    
+ <form method="post" action="/report_gsm">   
+    {% csrf_token %}
+    
+    <div class="form-group col-md-4">
+        <label class="form-label" for="typeNumber">Enter GSM</label>
+        <input type="text" id="typeNumber" name="req_gsm" class="form-control" />
+        <button type="submit"  class="btn btn-primary">Print</button>
+  
+
+    
+
+ </form>
+ <button type="submit"  class="nav-link" ><a href="/report_all">Print all GSM </a></button>
+ 
+
+</body>
+
+</html>
+
+{% endblock body %}

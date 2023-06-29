@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Reel report |{% endblock title %}
+{% block body %} 
+<html>
+<body>
+	<style>
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+</style>
+<div class="container">
+	<button class="no-print" onclick="window.print()">Print</button>
+<table class="table table-dark table-striped">
+	<h1><{{ "req_gsm" }}></h1>
+	<thead>
+	<tr>
+		<th>Serial no</th>
+        <th>Reel no</th>
+		<th>Mill name</th>
+		<th>GSM</th>
+		<th>Size</th>
+		<th>Date</th>
+        <th>Weight</th>
+        <th>Rate</th>
+        <th>Utilized</th>
+        <th>Balance</th>
+        <th>Waste</th>
+		<th>Amount</th>
+	</tr>
+	</thead>
+	<tbody>
+	<!-- jinja2 Technique -->
+	
+	{% for i in show %}
+	<tr>
+        
+		<td >{{i.id}}</td>
+        <td >{{i.reel_no}}</td>
+		<td>{{i.reel_mill}}</td>
+		<td>{{i.reel_gsm}}</td>
+		<td>{{i.reel_size}}</td>
+		<td>{{i.reel_date}}</td>
+        <td>{{i.reel_weight}}</td>
+        <td>{{i.reel_rate}}</td>
+		<td>{{i.reel_utilization}}</td>
+		<td>{{i.reel_balance}}</td>
+		<td>{{i.reel_waste}}</td>
+		<td>{{i.reel_amount}}</td>
+         
+	</tr>
+	{% endfor %}
+	<td>Grand Total</td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td>{{reelweight}}</td>
+	<td>{{reelrate}}</td>
+	<td>{{reelutilization}}</td>
+	<td>{{reelbalance}}</td>
+	<td>{{reelwaste}}</td>
+	<td>{{reelamount}}</td>
+	
+	</tbody>
+</table>
+</div>
+</body>
+</html>
+{% endblock body %}

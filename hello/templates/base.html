@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> {% block title %}{% endblock title %} Shree datta traders </title>
+</head>
+<body>
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <title></title>
+  </head>
+  <body>
+    <h1></h1>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="/welcome">SDT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!--<li class="nav-item active">
+          <a class="nav-link" href="/welcome">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>-->  
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/reel">Reel Entry</a>
+        </li>
+        </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="/admin">Admin</a>
+        </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="/inventory">Inventory</a>
+        </li>
+        </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="/report">Report</a>
+        </li>
+        
+        
+      </ul>
+     
+    </div>
+  </nav>
+
+<p>
+{% block body%}{% endblock body %}    
+
+
+</p>
+</body>
+
+</html>
